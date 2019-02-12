@@ -1,6 +1,6 @@
-#!/usr/bin/env perl                                                    
+#!/usr/bin/env perl
 #-----------------#
-# PROGRAM: Parsing string 
+# PROGRAM: Parsing string
 #-----------------#
 
 use strict;
@@ -31,11 +31,11 @@ while ( $line = <$content> ) {
     if ($line =~ s/LoadWord = (\w+)    (\d+)/$1/) {
       $line =~ s/^\s+//;
       push @sim_result , $line;
-      #print "$line";                                   
+      #print "$line";
     }
   }
 
-} 
+}
 
 while ( $line_data = <$datafile> ) {
   chomp $line_data;
@@ -44,12 +44,12 @@ while ( $line_data = <$datafile> ) {
   if ($line_data =~ /@/) {
     }
   else {
-    # Read_Date file           
+    # Read_Date file
     push @data , $line_data;
     #print "$line_data";
   }
 
-}                                           
+}
 
 Compare(\@sim_result, \@data);
 
@@ -63,16 +63,16 @@ close $load or die "can't close file: $!";
 sub Compare {
   my ( $sim_result, $load_data) = @_;
   my @sim   = @{  $sim_result };
-  my @data  = @{  $load_data }; 
-  
+  my @data  = @{  $load_data };
+
   my $sim_count;
   my $data_count;
   $sim_count  = scalar(@sim);
   $data_count = scalar(@data);
-  print "$sim_count, $data_count \n"; 
+  print "$sim_count, $data_count \n";
 
   # Loop over the array
-  foreach (@sim)                                    
+  foreach (@sim)
   {
       print $load "$_"; # Print each entry in our array to the file
   }
